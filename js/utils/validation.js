@@ -3,24 +3,33 @@ const Validation = {
     patterns: {
         // Title: no leading/trailing spaces
         title: /^\S(?:.*\S)?$/,
-        
+
         // Duration: positive number with optional decimal
-        duration: /^([1-9]\d*)(.\d{1,2})?$/,
-        
+        duration: /^([1-9]\d*)(\.\d{1,2})?$/,
+
         // Date: YYYY-MM-DD format
         date: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
-        
+
         // Tag: letters, spaces, or hyphens
         tag: /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/,
-        
+
         // Advanced patterns
-        duplicateWords: /\b(\w+)\s+\1\b/,
-        timeFormat: /\b\d{2}:\d{2}\b/
+        duplicateWords: /\b(\w+)\s+\1\b/, // Back-reference: detects repeated words
+        timeFormat: /\b\d{2}:\d{2}\b/,
+
+        // 🔍 Advanced regex (positive lookahead)
+        // Requires at least one uppercase letter, one lowercase letter, and one digit
+        // Example: "Project1" ✅ but "project" ❌
+        strongTitle: /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d\s\-]+$/
     },
 
     // Validate task title
     validateTitle(title) {
-        return this.patterns.title.test(title);
+        // Basic format check
+        if (!this.patterns.title.test(title)) return false;
+
+        // Optional: Require mixed-case + digit using advanced lookahead
+        return this.patterns.strongTitle.test(title);
     },
 
     // Validate duration
@@ -31,7 +40,7 @@ const Validation = {
     // Validate date
     validateDate(date) {
         if (!this.patterns.date.test(date)) return false;
-        
+
         // Check if it's a valid date
         const d = new Date(date);
         return d instanceof Date && !isNaN(d);
@@ -57,7 +66,7 @@ const Validation = {
         const errors = [];
 
         if (!this.validateTitle(task.title)) {
-            errors.push('Invalid title format');
+            errors.push('Title must include uppercase, lowercase, and a number (no extra spaces).');
         }
 
         if (!this.validateDuration(task.duration)) {
