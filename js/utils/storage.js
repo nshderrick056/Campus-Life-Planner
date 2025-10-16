@@ -44,15 +44,31 @@ const Storage = {
         this.saveTasks(filteredTasks);
     },
 
-    // Import data from JSON
+    // Import data from JSON and append
     importData(jsonData) {
         try {
-            const data = JSON.parse(jsonData);
-            if (Array.isArray(data)) {
-                this.saveTasks(data);
-                return true;
-            }
-            return false;
+            const importedTasks = JSON.parse(jsonData);
+            if (!Array.isArray(importedTasks)) return false;
+
+            const existingTasks = this.getTasks();
+
+            // Find the next available ID number
+            const existingIds = existingTasks.map(t => parseInt(t.id.replace('rec_', ''), 10));
+            const nextIdNum = existingIds.length ? Math.max(...existingIds) + 1 : 1;
+
+            // Map imported tasks to include new IDs and timestamps
+            const tasksToAdd = importedTasks.map((task, index) => ({
+                ...task,
+                id: `rec_${String(nextIdNum + index).padStart(3, '0')}`,
+                createdAt: task.createdAt || new Date().toISOString(),
+                updatedAt: task.updatedAt || new Date().toISOString()
+            }));
+
+            // Append imported tasks
+            const updatedTasks = [...existingTasks, ...tasksToAdd];
+            this.saveTasks(updatedTasks);
+
+            return true;
         } catch (error) {
             console.error('Error importing data:', error);
             return false;

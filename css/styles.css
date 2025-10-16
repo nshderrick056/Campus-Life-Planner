@@ -546,6 +546,10 @@ input, select {
     background-color: #e8e8e8;
 }
 
+body[data-theme="dark"] .secondary-btn:hover {
+    background-color: #121212;
+}
+
 /* Accessibility */
 :focus {
     outline: 3px solid var(--primary-color);
@@ -578,6 +582,11 @@ input, select {
     body[data-theme="dark"] .nav-links a i {
         color: #fff !important;
     }
+
+    
+
+
+    
 
     .nav-links.active {
         display: flex;
