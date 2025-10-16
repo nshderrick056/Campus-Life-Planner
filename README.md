@@ -1,5 +1,10 @@
 # 📅 Campus Life Planner
 
+# Submission LINKS
+
+Link to the website: https://nshderrick056.github.io/Campus-Life-Planner/
+Link to the Demo video: https://youtu.be/Y5finah_mPg
+
 A **Campus Life Planner** that helps students organize and manage their daily campus activities — including tasks, events, durations, and tags — with powerful regex search, sorting, and a responsive user interface.
 
 ---
