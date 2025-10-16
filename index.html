@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Life Planner</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="logo">
+                <h1 class="logo-full"> Campus Life Planner</h1>
+                <h1 class="logo-short"> CLP</h1>
+            </div>
+            <div class="header-toggles">
+                <button class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+            <ul class="nav-links" role="menu">
+                <li role="none"><a href="#" data-page="dashboard" class="active" role="menuitem"><i class="fas fa-chart-bar" aria-hidden="true"></i> Dashboard</a></li>
+                <li role="none"><a href="#" data-page="records" role="menuitem"><i class="fas fa-tasks" aria-hidden="true"></i> Records</a></li>
+                <li role="none"><a href="#" data-page="settings" role="menuitem"><i class="fas fa-cog" aria-hidden="true"></i> Settings</a></li>
+                <li role="none"><a href="#" data-page="about" role="menuitem"><i class="fas fa-info-circle" aria-hidden="true"></i> About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+    <!-- ARIA live region for status messages -->
+    <div id="aria-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+    <!-- Dashboard Section -->
+        <section id="dashboard" class="page active" aria-live="polite">
+            <h2>Dashboard</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Tasks</h3>
+                    <p id="totalTasks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Duration</h3>
+                    <p id="totalDuration">0 mins</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Most Used Tag</h3>
+                    <p id="mostUsedTag">-</p>
+                </div>
+            </div>
+            <div class="recent-activities">
+                <h3>Recent Activities</h3>
+                <div id="recentActivitiesList"></div>
+            </div>
+        </section>
+
+        <!-- Records Section -->
+        <section id="records" class="page" aria-live="polite">
+            <h2>Records</h2>
+            <div class="actions-bar">
+                <button id="addNewTask" class="primary-btn" aria-label="Add new task">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                    <span>Add New Task</span>
+                </button>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search tasks..." aria-label="Search tasks">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="tasks-container" id="tasksContainer"></div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="page" aria-live="polite">
+            <h2>Settings</h2>
+            <form id="settingsForm">
+                <div class="settings-card">
+                    <div class="setting-group">
+                        <h3>Display Options</h3>
+                        <label>
+                            Duration Format:
+                            <select name="durationFormat" id="durationFormat">
+                                <option value="minutes">Minutes</option>
+                                <option value="hours">Hours</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="settings-card">
+                    <div class="setting-group">
+                        <h3>Data Management</h3>
+                        <div class="settings-btn-row">
+                            <button type="button" id="exportData" class="secondary-btn">Export Data</button>
+                            <button type="button" id="importData" class="secondary-btn">Import Data</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page" aria-live="polite">
+            <h2>About Campus Life Planner</h2>
+            <div class="about-card">
+                <div class="about-inner">
+                    <section class="about-section" id="about-purpose">
+                        <h3>Purpose</h3>
+                        <p>Campus Life Planner helps students organize academic and campus life by enabling fast task creation, clear scheduling, and simple tracking of time spent on activities.</p>
+                    </section>
+
+                    <section class="about-section" id="about-features">
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li><strong>Task & Event Management:</strong> Create, edit and delete tasks with title, duration (in minutes), tag and due date.</li>
+                            <li><strong>Recent Activities:</strong> Quickly view the 5 most recent tasks on the dashboard for instant context.</li>
+                            <li><strong>Smart Duration Display:</strong> Durations show as hours + minutes when &gt;= 60 minutes (e.g. "1 hr 15 mins").</li>
+                            <li><strong>Search & Filter:</strong> Fast searching across titles and tags with regex support for advanced queries.</li>
+                            <li><strong>Import / Export:</strong> Backup or transfer your data using the JSON import/export tools.</li>
+                            <li><strong>Dark / Light Mode:</strong> Toggle between themes and your preference is saved per-browser.</li>
+                            <li><strong>Responsive & Accessible:</strong> Mobile-first responsive layout with keyboard navigation and ARIA attributes.</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section" id="about-how">
+                        <h3>How it works</h3>
+                        <ol>
+                            <li>On first load, the app seeds example data so you can explore features immediately.</li>
+                            <li>Create tasks via the "Add New Task" button — inputs are validated and trimmed of extra whitespace before save.</li>
+                            <li>Tasks are saved locally in your browser's <code>localStorage</code> so they persist between visits.</li>
+                            <li>Use Settings to change duration display (minutes or hours) and to export/import your data as JSON.</li>
+                        </ol>
+                    </section>
+
+                    <section class="about-section" id="about-privacy">
+                        <h3>Privacy & Data</h3>
+                        <p>Your data stays local to your browser by default (stored in <code>localStorage</code>). Import/Export lets you move data between devices. No data is sent to any server by this app.</p>
+                    </section>
+                </div>
+                <footer class="contact-card" aria-label="Contact information">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Email: <a href="mailto:d.gatete@alustudent.com">d.gatete@alustudent.com</a></li>
+                        <li>GitHub: <a href="https://github.com/nshderrick056" target="_blank">nshderrick056</a></li>
+                    </ul>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <!-- Task Form Modal -->
+    <div id="taskModal" class="modal" aria-modal="true" role="dialog">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add New Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Title:</label>
+                    <input type="text" id="taskTitle" required pattern="\S(?:.*\S)?" title="No leading or trailing spaces allowed">
+                </div>
+                <div class="form-group">
+                    <label for="taskDuration">Duration (minutes):</label>
+                    <input type="number" id="taskDuration" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="taskTag">Tag:</label>
+                    <input type="text" id="taskTag" required pattern="[A-Za-z]+(?:[ -][A-Za-z]+)*">
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date:</label>
+                    <input type="date" id="taskDueDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Save</button>
+                    <button type="button" class="secondary-btn" id="cancelTask">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/validation.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

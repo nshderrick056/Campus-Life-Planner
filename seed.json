@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rec_001",
+    "title": "Math assignment - Integration",
+    "dueDate": "2025-10-10",
+    "duration": 120,
+    "tag": "Studies",
+    "createdAt": "2025-09-15T10:00:00Z",
+    "updatedAt": "2025-09-15T10:00:00Z"
+  },
+  {
+    "id": "rec_002",
+    "title": "Group meeting @library",
+    "dueDate": "2025-10-08",
+    "duration": 60,
+    "tag": "Meetups",
+    "createdAt": "2025-09-14T09:00:00Z",
+    "updatedAt": "2025-09-14T09:00:00Z"
+  },
+  {
+    "id": "rec_003",
+    "title": "Gym \u2014 cardio",
+    "dueDate": "2025-10-07",
+    "duration": 45,
+    "tag": "Health",
+    "createdAt": "2025-09-12T08:00:00Z",
+    "updatedAt": "2025-09-12T08:00:00Z"
+  },
+  {
+    "id": "rec_004",
+    "title": "Chem lab report",
+    "dueDate": "2025-09-29",
+    "duration": 180,
+    "tag": "Studies",
+    "createdAt": "2025-09-01T12:00:00Z",
+    "updatedAt": "2025-09-01T12:00:00Z"
+  },
+  {
+    "id": "rec_005",
+    "title": "Lunch with mentor",
+    "dueDate": "2025-10-09",
+    "duration": 90,
+    "tag": "Networking",
+    "createdAt": "2025-09-05T11:00:00Z",
+    "updatedAt": "2025-09-05T11:00:00Z"
+  },
+  {
+    "id": "rec_006",
+    "title": "Library reading: 'Modern JS'",
+    "dueDate": "2025-10-06",
+    "duration": 30,
+    "tag": "Studies",
+    "createdAt": "2025-08-20T14:00:00Z",
+    "updatedAt": "2025-08-20T14:00:00Z"
+  },
+  {
+    "id": "rec_007",
+    "title": "Final year project brainstorm",
+    "dueDate": "2025-12-01",
+    "duration": 240,
+    "tag": "Project",
+    "createdAt": "2025-09-20T16:00:00Z",
+    "updatedAt": "2025-09-20T16:00:00Z"
+  },
+  {
+    "id": "rec_008",
+    "title": "Volunteer \u2014 community clean-up",
+    "dueDate": "2025-10-01",
+    "duration": 120,
+    "tag": "Volunteering",
+    "createdAt": "2025-07-10T07:00:00Z",
+    "updatedAt": "2025-07-10T07:00:00Z"
+  },
+  {
+    "id": "rec_009",
+    "title": "Part-time job shift",
+    "dueDate": "2025-09-30",
+    "duration": 300,
+    "tag": "Work",
+    "createdAt": "2025-09-01T06:00:00Z",
+    "updatedAt": "2025-09-01T06:00:00Z"
+  },
+  {
+    "id": "rec_010",
+    "title": "Study group \u2014 calculus (duplicate duplicate)",
+    "dueDate": "2025-10-02",
+    "duration": 150,
+    "tag": "Studies",
+    "createdAt": "2025-09-02T10:00:00Z",
+    "updatedAt": "2025-09-02T10:00:00Z"
+  }
+]
